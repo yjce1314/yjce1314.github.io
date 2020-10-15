@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>玩客云 刷armbian 挂甜糖 GIF动图教程 | 大锤的博客</title><meta name="description" content="玩客云 刷armbian 挂甜糖 GIF动图教程"><meta name="author" content="DaChui"><meta name="copyright" content="DaChui"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/yjce1314/dachui/blog/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><meta name="twitter:card" content="summary"><meta name="twitter:title" content="玩客云 刷armbian 挂甜糖 GIF动图教程"><meta name="twitter:description" content="玩客云 刷armbian 挂甜糖 GIF动图教程"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yjce1314/dachui/img/20200319115004.jpg"><meta property="og:type" content="article"><meta property="og:title" content="玩客云 刷armbian 挂甜糖 GIF动图教程"><meta property="og:url" content="https://dachui.co/p/19"><meta property="og:site_name" content="大锤的博客"><meta property="og:description" content="玩客云 刷armbian 挂甜糖 GIF动图教程"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/yjce1314/dachui/img/20200319115004.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yjce1314/dachui/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://dachui.co/p/19"><link rel="next" title="矿渣 星际魔盒 折腾记（3) - 硬改X86主板 完美黑群辉NAS主机" href="https://dachui.co/p/18.html"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://dachui.co/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: DaChui","link":"链接: https://dachui.co/p/19","source":"来源: 大锤的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">大锤的博客</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/yjce1314/dachui/blog/avatar.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/yjce1314/dachui/blog/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">19</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">35</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><div id="body-wrap"><main id="content-outer"><div id="top-container" style="background-image: url(https://cdn.jsdelivr.net/gh/yjce1314/dachui/img/20200319115004.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">玩客云 刷armbian 挂甜糖 GIF动图教程</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2020-10-15<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-10-15</time><div class="post-meta-wordcount"><div class="post-meta-pv-cv"></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>  前些天研究 矿渣玩客云 刷openwrt 单臂/旁路由 与N1能否一战？在恩山潜水许久，看到有关于玩客云刷armbian跑甜糖CDN的教程，鉴于图文教程比较杂乱，花了点时间录制GIF，造福小白玩家，一起玩转废旧矿渣！</p>
+<h1 id="刷机教程"><a href="#刷机教程" class="headerlink" title="刷机教程"></a>刷机教程</h1><p>  玩客云刷机我录制了刷机教程，不会刷机的先详细观看下面视频。</p>
+<p>视频相关文件关注本人后私信关键字：玩客云  免费获取。</p>
+<h1 id="配置教程"><a href="#配置教程" class="headerlink" title="配置教程"></a>配置教程</h1><p>我把配置教程大致分为4个步骤：</p>
+<ol>
+<li>挂载磁盘</li>
+<li>部署甜糖，修改、固定mac地址</li>
+<li>设置守护脚本</li>
+<li>绑定APP、上线</li>
+</ol>
+<hr>
+<p>我们开始配置，文字描述我只简单的讲一下流程和命令，具体操作请看动图。</p>
+<p><strong>一、挂载磁盘</strong></p>
+<p><a href="https://p26-tt.byteimg.com/large/pgc-image/8e7c9107a0304c9abe5f6f71c16126ad" target="_blank" rel="noopener" data-fancybox="group" data-caption="img" class="fancybox"><img alt="img" title="img" data-src="https://p26-tt.byteimg.com/large/pgc-image/8e7c9107a0304c9abe5f6f71c16126ad" class="lazyload"></a></p>
+<p>1.插入储存设备，U盘或者移动硬盘都可以，格式推荐ext4。</p>
+<p>2.通过ssh连接刷好armbian的玩客云（首次登陆要修改密码，我打包的armbian默认密码1234）。</p>
+<p>3.在根目录创建 mnts 目录</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;.</span><br><span class="line">mkdir mnts</span><br></pre></td></tr></table></figure></div>
+
+<p>4.通过 lsblk 命令获取磁盘分区，并挂载磁盘到mnts目录。</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br><span class="line">mount &#x2F;dev&#x2F;sda1 &#x2F;mnts&#x2F;</span><br></pre></td></tr></table></figure></div>
+
+<p>5.通过 blkid 命令获取存储设备UUID</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blkid &#x2F;dev&#x2F;sda1</span><br></pre></td></tr></table></figure></div>
+
+<p>6.通过winscp编辑 /etc/fstab 文件，在fstab最后添加存储设备信息，实现开机自动加载</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UUID&#x3D;722059EC2059B835   &#x2F;mnts      ext4    defaults        0 0</span><br></pre></td></tr></table></figure></div>
+
+<p>7.通过mount -a命令重新加载 /etc/fstab 内容</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -a</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>二、部署**</strong>甜糖<strong>**，修改、固定mac地址</strong></p>
+<p><a href="https://p6-tt-ipv6.byteimg.com/large/pgc-image/3862e2ed44944208ac7909da896b7074" target="_blank" rel="noopener" data-fancybox="group" data-caption="img" class="fancybox"><img alt="img" title="img" data-src="https://p6-tt-ipv6.byteimg.com/large/pgc-image/3862e2ed44944208ac7909da896b7074" class="lazyload"></a></p>
+<p>1.winscp在 /usr目录建立 node 文件夹（动图文件夹名打错了，注意，新建目录名为 node）</p>
+<p>2.把我打包文件中 甜糖的三个文件 ttnode、log.log、crash_monitor.sh 拖进/usr/node文件夹，并修改权限为0777</p>
+<p>3.winscp打开 /etc/rc.local 文件，在exit 0 上方添加如下代码</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service sshd start</span><br><span class="line">&#x2F;usr&#x2F;node&#x2F;ttnode -p &#x2F;mnts</span><br></pre></td></tr></table></figure></div>
+
+<p>4.用winscp打开 /etc/network/interfaces 文件，将玩客云本身MAC地址写入网卡</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwaddress B0:D5:9D:xx:xx:xx</span><br></pre></td></tr></table></figure></div>
+
+<p>5.重启用 ifconfig 命令查看修改是否成功（据说不修改Mac地址会乱跳，没测试）</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>三、设置守护脚本</strong></p>
+<p><a href="https://p1-tt-ipv6.byteimg.com/large/pgc-image/9f56138689b443c29c13b5bbfecbe572" target="_blank" rel="noopener" data-fancybox="group" data-caption="img" class="fancybox"><img alt="img" title="img" data-src="https://p1-tt-ipv6.byteimg.com/large/pgc-image/9f56138689b443c29c13b5bbfecbe572" class="lazyload"></a></p>
+<p>1.通过命令 crontab -e 打开定时任务文件，并按 1 用nano编辑器编辑</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">1</span><br></pre></td></tr></table></figure></div>
+
+<p> 2.按方向键定位到文件末尾，添加一行代码</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * &#x2F;usr&#x2F;node&#x2F;crash_monitor.sh</span><br></pre></td></tr></table></figure></div>
+
+<p>3.按 Ctrl+O 保存文件，Ctrl+X 退出编辑</p>
+<p>4.通过 crontab -l 命令显示 crontab 文件内容</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure></div>
+
+<p>5.通过命令查看进程运行状态（我这里第二步新建文件夹名称弄错，所以程序没跑起来，改过来以后重启就好了，还是要细心啊）</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep ttnode</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>四、绑定APP、上线</strong></p>
+<p><a href="https://p1-tt-ipv6.byteimg.com/large/pgc-image/6e48457fdfbf4c9baf29b38ecefd13e2" target="_blank" rel="noopener" data-fancybox="group" data-caption="img" class="fancybox"><img alt="img" title="img" data-src="https://p1-tt-ipv6.byteimg.com/large/pgc-image/6e48457fdfbf4c9baf29b38ecefd13e2" class="lazyload"></a></p>
+<p>  这个比较简单，安装APP、注册登录后，点击右上角+号，同局域网的甜糖设备就会自动识别，绑定后系统部署时间在15分钟左右，期间系统会测试网络，储存设备状况。</p>
+<p>  大家也可以填一下我的推荐码：<strong>587888</strong>  获得15张星愿加速卡，比较吉利哈。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><a href="https://p9-tt-ipv6.byteimg.com/large/pgc-image/9bdf1ac8a9b1486e92f7c6bc1e83ac4a" target="_blank" rel="noopener" data-fancybox="group" data-caption="img" class="fancybox"><img alt="img" title="img" data-src="https://p9-tt-ipv6.byteimg.com/large/pgc-image/9bdf1ac8a9b1486e92f7c6bc1e83ac4a" class="lazyload"></a></p>
+<p>  我昨天晚上9点上线第一台设备，挂到今天缓存有大概7G，200M电信宽带上行40M，上行基本跑满，按交流群相同状况设备收入应该在3-4元一天，还是相当可观的。</p>
+<p>  本教程参考恩山玩客云、N1等盒子刷机配置教程，在此对前辈大佬表示感谢。</p>
+<p>  配置部署教程是建立在玩客云刷armbian成功，并在路由后台看到设备上线为基础的，如果出现问题请仔细观看上面刷机视频，如果有解决不了的也可以留言，尽量为大家解答。 </p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">DaChui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://dachui.co/p/19.html">https://dachui.co/p/19.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://DaChui.co">大锤的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/yjce1314/dachui/img/20200319115004.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/p/18.html"><img class="next_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/yjce1314/dachui/img/1/uNTV9vEfrlStieP.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/yjce1314/dachui/blog/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>矿渣 星际魔盒 折腾记（3) - 硬改X86主板 完美黑群辉NAS主机</span></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+var verify = false == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'J3QtN0ldWcCMBB2gORvc164c-gzGzoHsz',
+  appKey:'j1WWCov4VdeLE46D3gNpNc2X',
+  placeholder:'Please leave your footprints',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By DaChui</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-sun-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/yjce1314/dachui/js/utils.js"></script><script src="https://cdn.jsdelivr.net/gh/yjce1314/dachui/js/main.js"></script><script src="https://cdn.jsdelivr.net/gh/yjce1314/dachui/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/click_heart.js"></script><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"https://cdn.jsdelivr.net/gh/yjce1314/dachui/live2dw/assets/tororo1.model.json"},"display":{"superSample":2,"width":250,"height":500,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
