@@ -39,14 +39,15 @@ case $num in
 			echo "输入正确，开始部署！"         
 			cp -pdr /etc/rc.local /etc/rc.local.default
 			cp -pdr /etc/crontab /etc/crontab.default
-			rm -rf /etc/network/interfaces
+			rm -rf /etc/network/interfaces.default
 			cp -pdr /etc/network/interfaces /etc/network/interfaces.default
 			
 			rm -rf /mnts
 			mkdir /mnts
 			fdisk -l
-			read -p "tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名改为【 587888 】
-			请填入要挂载的分区，例如/dev/sda1:" fenqu
+			read -p "
+tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名改为【 587888 】
+请填入要挂载的分区，例如/dev/sda1:" fenqu
 			mount $fenqu /mnts/
 		
 			rm -rf /usr/node
@@ -104,14 +105,15 @@ bug反馈链接：https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=40
 			echo "输入正确，开始部署！"         
 			cp -pdr /etc/rc.local /etc/rc.local.default
 			cp -pdr /etc/crontab /etc/crontab.default
-			rm -rf /etc/network/interfaces
+			rm -rf /etc/network/interfaces.default
 			cp -pdr /etc/network/interfaces /etc/network/interfaces.default
 			
 			rm -rf /mnts
 			mkdir /mnts
 			fdisk -l
-			read -p "tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名改为【 587888 】
-			请填入要挂载的分区，例如/dev/sda1:" fenqu
+			read -p "
+tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名改为【 587888 】
+请填入要挂载的分区，例如/dev/sda1:" fenqu
 			mount $fenqu /mnts/
 		
 			rm -rf /usr/node
