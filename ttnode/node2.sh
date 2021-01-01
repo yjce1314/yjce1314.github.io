@@ -34,22 +34,22 @@ EOF
 read -p "${zhuangtai}请确认操作：" num
 case $num in
     1)
-		anzhuang32
+		install32
       ;;
     2)
-		anzhuang64
+		install64
       ;;
     3)
-		xiugaimac
+		changeMac
 	;;
     4)
-		xiezai
+		uninstall
 	;;
 	5)
 	echo "功能开发中！敬请期待~~~
 
 	开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
-	
+
 	3秒后返回主菜单..."
 		sleep 3s
 		menu
@@ -61,9 +61,7 @@ case $num in
 		exit 0
 esac
 }
-menu
-
-function xiezai()
+function uninstall()
 {
 	rm -rf /etc/rc.local
 	rm -rf /etc/crontab
@@ -81,7 +79,7 @@ function xiezai()
 	menu
 }
 
-function xiugaimac()
+function changeMac()
 {
 	if [ ! -d /root/587888/1/ ]; then
 	echo "甜糖未安装，请安装后修改Mac地址、、、"
@@ -99,7 +97,7 @@ function xiugaimac()
 	fi
 }
 
-function beifen()
+function backup()
 {
 	myPath="/root/587888/"
 
@@ -116,7 +114,7 @@ function beifen()
 
 
 
-function anzhuang32()
+function install32()
 {
 			read -p '
 欢迎使用32位armbian甜糖CDN自动部署程序
@@ -183,7 +181,7 @@ bug反馈链接：https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=40
 
 }
 
-anzhuang64()
+function install64()
 {
 			read -p '
 欢迎使用64位armbian甜糖CDN自动部署程序
@@ -251,3 +249,5 @@ bug反馈链接：https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=40
 		fi
 
 }
+
+menu
