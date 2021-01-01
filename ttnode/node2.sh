@@ -127,7 +127,7 @@ function install32()
 		 
 		if [ $number = 587888 ];then
 			echo "输入正确，开始部署！"         
-			beifen
+			backup
 			rm -rf /mnts
 			mkdir /mnts
 			fdisk -l
@@ -194,7 +194,7 @@ function install64()
 		 
 		if [ $number = 587888 ];then
 			echo "输入正确，开始部署！"         
-			beifen
+			backup
 			
 			rm -rf /mnts
 			mkdir /mnts
