@@ -55,6 +55,7 @@ case $num in
 		;;
     6)
 		reboot
+		;;
 	7)
 		exit 0
 esac
