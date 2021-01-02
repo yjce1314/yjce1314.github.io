@@ -32,7 +32,9 @@ if [ $number = 587888 ];then
 	rm -rf /usr/node
 	mkdir /usr/node
 	cd /usr/node/
-	if [ $(getconf WORD_BIT) = '32' ];then
+
+	is64bit=$(getconf LONG_BIT)
+	if [ "${is64bit}" != '64' ];then
 		echo "32位系统，3秒后即将开始部署32位甜糖程序!"
 		sleep 3s
 		wget https://dachui.co/ttnode/ttnode32 -O ttnode
