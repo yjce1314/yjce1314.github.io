@@ -61,6 +61,42 @@ case $num in
 		exit 0
 esac
 }
+
+function login()
+{
+read -p "请输入手机号码：" tel
+if [ ${#tel} = 11 ];then
+	codeText=$(curl -X POST http://tiantang.mogencloud.com/web/api/login/code?phone=$tel|jq '.errCode')
+	if [ $codeText = 0 ];then
+		read -p "验证码发送成功，请输入：" code
+		if [ ${#code} = 6 ];then
+			tokenText=$(curl -X POST http://tiantang.mogencloud.com/web/api/login?phone=$tel\&authCode=$code|jq '.data.token' | sed 's/\"//g')
+			if [ $tokenText = null ];then
+				echo "登录失败，请重试！"
+			else
+				echo $tokenText > token.txt
+				read -p "登录成功，请输入Server酱监控SCKEY,不使用直接按回车：" sckey
+				if [ ${#sckey} -gt 30 ];then 
+					echo $sckey > sckey.txt
+				fi
+				#写监控脚本
+				wget 
+			fi
+		else
+			echo "验证码输入错误！"
+		fi
+	else
+	echo "发送验证码失败，请重试！"
+	fi
+else
+	echo "手机号码输入错误！"
+fi
+}
+
+
+
+
+
 function uninstall()
 {
 	rm -rf /etc/rc.local
