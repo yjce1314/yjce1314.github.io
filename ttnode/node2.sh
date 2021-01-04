@@ -86,7 +86,7 @@ if [ ${#tel} = 11 ];then
 				cd /root/587888/
 				wget https://dachui.co/ttnode/587888.sh
 				chmod -R 777 *
-				sed -i '30 4 * * *	root	/root/587888/587888.sh' /etc/crontab
+				sed -i '15a 30 4 * * *	root	/root/587888/587888.sh' /etc/crontab
 				echo "部署成功，每天凌晨4点30分准时收取星愿！5秒后返回主菜单！"
 				sleep 5s
 				menu
