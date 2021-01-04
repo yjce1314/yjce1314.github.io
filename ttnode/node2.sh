@@ -46,13 +46,16 @@ case $num in
 		uninstall
 	;;
 	5)
-	echo "功能开发中！敬请期待~~~
+	echo "功能已完善正式上线~~~
+
+	脚本引用开源Jq解析json，部署过程中会自动安装Jq，可能需要输入Y回车继续。
 
 	开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
 
-	3秒后返回主菜单..."
-		sleep 3s
-		menu
+	"
+	read -p "按任意键继续..."
+	sudo apt-get install jq
+	login
 		;;
     6)
 		reboot
@@ -80,7 +83,13 @@ if [ ${#tel} = 11 ];then
 					echo $sckey > sckey.txt
 				fi
 				#写监控脚本
-				wget 
+				cd /root/587888/
+				wget https://dachui.co/ttnode/587888.sh
+				chmod -R 777 *
+				sed -i '30 4 * * *	root	/root/587888/587888.sh' /etc/crontab
+				echo "部署成功，每天凌晨4点30分准时收取星愿！5秒后返回主菜单！"
+				sleep 5s
+				menu
 			fi
 		else
 			echo "验证码输入错误！"

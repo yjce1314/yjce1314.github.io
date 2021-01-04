@@ -44,7 +44,7 @@ do
 		echo >> msg.txt
 		echo >> msg.txt
 	fi
-	
+	sleep 5s
 done
 
 echo "***" >> msg.txt
