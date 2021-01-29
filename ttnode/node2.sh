@@ -22,8 +22,9 @@ function menu ()
 `echo -e "\033[35m 3)更换Mac地址\033[0m"`
 `echo -e "\033[35m 4)卸载甜糖\033[0m"`
 `echo -e "\033[35m 5)星愿一键领取\033[0m"`
-`echo -e "\033[35m 6)重启设备\033[0m"`
-`echo -e "\033[35m 7)退出\033[0m"`
+`echo -e "\033[35m 6)星愿自动提现\033[0m"`
+`echo -e "\033[35m 7)重启设备\033[0m"`
+`echo -e "\033[35m 8)退出\033[0m"`
 EOF
 	if [ -d /root/587888/1/ ]; then
 		zhuangtai="甜糖已安装！"
@@ -46,9 +47,9 @@ case $num in
 		uninstall
 	;;
 	5)
-	echo "功能已完善正式上线~~~
+	echo "本功能全自动领取星愿！
 
-	脚本引用开源Jq解析json，部署过程中会自动安装Jq，可能需要输入Y回车继续。
+	脚本引用开源Jq解析json，部署过程中会自动安装Jq，没有安装需要输入Y回车继续。
 
 	开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
 
@@ -58,11 +59,34 @@ case $num in
 	login
 		;;
     6)
+	echo "每周三自动提现星愿到绑定的支付宝账号！
+
+	本功能需要开启星愿自动领取，sever酱通知同样引用自动领取通知！
+
+	开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
+
+	"
+	read -p "按任意键继续..."
+	sudo apt-get install jq
+	withdraw
+		;;
+    7)
 		reboot
 		;;
-	7)
+	8)
 		exit 0
 esac
+}
+function withdraw()
+{
+	#写监控脚本
+	cd /root/587888/
+	wget https://dachui.co/ttnode/withdraw.sh
+	chmod -R 777 *
+	sed -i '16a 30 8 * * 3	root	/root/587888/withdraw.sh' /etc/crontab
+	echo "部署成功，每周三8点30分准时提现星愿！5秒后返回主菜单！"
+	sleep 5s
+	menu
 }
 
 function login()
