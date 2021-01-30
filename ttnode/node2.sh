@@ -194,7 +194,7 @@ function install32()
 		
 请输入邀请码 587888 开始自动部署：' number
 		 
-		if [ $number = 587888 ];then
+		if [[ $number = 587888 ]];then
 			echo "输入正确，开始部署！"         
 			backup
 			rm -rf /mnts
@@ -261,7 +261,7 @@ function install64()
 		
 请输入邀请码 587888 开始自动部署：' number
 		 
-		if [ $number = 587888 ];then
+		if [[ $number = 587888 ]];then
 			echo "输入正确，开始部署！"         
 			backup
 			
