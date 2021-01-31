@@ -91,6 +91,7 @@ function withdraw()
 
 function login()
 {
+cd /root/587888/
 read -p "请输入手机号码：" tel
 if [ ${#tel} = 11 ];then
 	codeText=$(curl -X POST http://tiantang.mogencloud.com/web/api/login/code?phone=$tel|jq '.errCode')
@@ -107,7 +108,6 @@ if [ ${#tel} = 11 ];then
 					echo $sckey > sckey.txt
 				fi
 				#写监控脚本
-				cd /root/587888/
 				wget https://dachui.co/ttnode/587888.sh
 				chmod -R 777 *
 				sed -i '15a 30 4 * * *	root	/root/587888/587888.sh' /etc/crontab
