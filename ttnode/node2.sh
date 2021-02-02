@@ -1,4 +1,6 @@
 #!/bin/sh
+rm -f /etc/localtime
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 clear
 function menu ()
 {
