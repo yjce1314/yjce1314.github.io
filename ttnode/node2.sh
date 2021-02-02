@@ -4,6 +4,18 @@ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 clear
 function menu ()
 {
+	if [ -d /root/587888/1/ ]; then
+		zt1="----已安装！"
+	fi
+	if [ -d /root/587888/2/ ]; then
+		zt2="----已安装！"
+	fi
+	if [ -d /root/587888/3/ ]; then
+		zt3="----已安装！"
+	fi
+	if [ -d /root/587888/4/ ]; then
+		zt4="----已安装！"
+	fi
     cat << EOF
 
 #######  #####  #######  #####   #####   #####  
@@ -17,24 +29,19 @@ function menu ()
 ==============================================
     填写邀请码：587888  免费获取15张加成卡！
 ==============================================
-玩客云刷armbian视频教程：https://post.smzdm.com/p/awx4rqkk/
+玩客云刷armbian视频教程：https://www.bilibili.com/video/BV1Va411A7MJ
 
-`echo -e "\033[35m 1)32位设备安装（玩客云）\033[0m"`
-`echo -e "\033[35m 2)64位设备安装（斐讯N1）\033[0m"`
+`echo -e "\033[35m 1)32位设备安装（玩客云）\033[0m$zt1"`
+`echo -e "\033[35m 2)64位设备安装（斐讯N1）\033[0m$zt2"`
 `echo -e "\033[35m 3)更换Mac地址\033[0m"`
 `echo -e "\033[35m 4)卸载甜糖\033[0m"`
-`echo -e "\033[35m 5)星愿自动领取\033[0m"`
-`echo -e "\033[35m 6)星愿自动提现\033[0m"`
+`echo -e "\033[35m 5)星愿自动领取\033[0m$zt3"`
+`echo -e "\033[35m 6)星愿自动提现\033[0m$zt4"`
 `echo -e "\033[35m 7)重启设备\033[0m"`
 `echo -e "\033[35m 8)退出\033[0m"`
 EOF
-	if [ -d /root/587888/1/ ]; then
-		zhuangtai="甜糖已安装！"
-	else
-		zhuangtai="甜糖未安装！"
-	fi
 
-read -p "${zhuangtai}请确认操作：" num
+read -p "请确认操作：" num
 case $num in
     1)
 		install32
@@ -82,6 +89,7 @@ esac
 function withdraw()
 {
 	#写监控脚本
+	mkdir /root/587888/4/
 	cd /root/587888/
 	wget https://dachui.co/ttnode/withdraw.sh
 	chmod -R 777 *
@@ -122,6 +130,7 @@ if [ ${#tel} = 11 ];then
 					wget https://dachui.co/ttnode/587888.sh
 					chmod -R 777 *
 					sed -i '15a 30 4 * * *	root	/root/587888/587888.sh' /etc/crontab
+					mkdir /root/587888/3/
 					echo "部署成功，每天凌晨4点30分准时收取星愿！5秒后返回主菜单！"
 				fi
 				sleep 5s
@@ -301,7 +310,7 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			sed -i "6a hwaddress $mac" /etc/network/interfaces
 			
 			sed -i '14a */1 * * * *	root	/usr/node/crash_monitor.sh' /etc/crontab
-			mkdir /root/587888/1/
+			mkdir /root/587888/2/
 			clear
 			echo "
 --------------------------------------------------------------------------------------------------
