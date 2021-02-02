@@ -23,7 +23,7 @@ function menu ()
 `echo -e "\033[35m 2)64位设备安装（斐讯N1）\033[0m"`
 `echo -e "\033[35m 3)更换Mac地址\033[0m"`
 `echo -e "\033[35m 4)卸载甜糖\033[0m"`
-`echo -e "\033[35m 5)星愿一键领取\033[0m"`
+`echo -e "\033[35m 5)星愿自动领取\033[0m"`
 `echo -e "\033[35m 6)星愿自动提现\033[0m"`
 `echo -e "\033[35m 7)重启设备\033[0m"`
 `echo -e "\033[35m 8)退出\033[0m"`
@@ -104,16 +104,26 @@ if [ ${#tel} = 11 ];then
 			if [ $tokenText = null ];then
 				echo "登录失败，请重试！"
 			else
-				echo $tokenText > token.txt
-				read -p "登录成功，请输入Server酱监控SCKEY,不使用直接按回车：" sckey
-				if [ ${#sckey} -gt 30 ];then 
-					echo $sckey > sckey.txt
+				if [ -d /root/587888/token.txt ]; then
+					rm -f token.txt
+					echo $tokenText > token.txt
+					read -p "甜糖token更新成功，如需更新Server酱监控SCKEY请直接输入,不更新请按回车：" sckey
+					if [ ${#sckey} -gt 30 ];then 
+						rm -f sckey.txt
+						echo $sckey > sckey.txt
+					fi
+				else
+					echo $tokenText > token.txt
+					read -p "登录成功，请输入Server酱监控SCKEY,不使用直接按回车：" sckey
+					if [ ${#sckey} -gt 30 ];then 
+						echo $sckey > sckey.txt
+					fi
+					#写监控脚本
+					wget https://dachui.co/ttnode/587888.sh
+					chmod -R 777 *
+					sed -i '15a 30 4 * * *	root	/root/587888/587888.sh' /etc/crontab
+					echo "部署成功，每天凌晨4点30分准时收取星愿！5秒后返回主菜单！"
 				fi
-				#写监控脚本
-				wget https://dachui.co/ttnode/587888.sh
-				chmod -R 777 *
-				sed -i '15a 30 4 * * *	root	/root/587888/587888.sh' /etc/crontab
-				echo "部署成功，每天凌晨4点30分准时收取星愿！5秒后返回主菜单！"
 				sleep 5s
 				menu
 			fi
@@ -141,7 +151,7 @@ function uninstall()
 	cp -pdr /root/587888/rc.local.default /etc/rc.local
 	cp -pdr /root/587888/crontab.default /etc/crontab
 	cp -pdr /root/587888/interfaces.default /etc/network/interfaces
-	rm -rf /root/587888/1/
+	rm -rf /root/587888/
 
 	echo "卸载甜糖成功！重启生效！
 
