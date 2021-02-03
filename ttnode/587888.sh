@@ -1,5 +1,5 @@
 #!/bin/bash
-token=$(cat token.txt)
+token=$(cat /root/587888/token.txt)
 rm -rf msg.txt
 
 text=$(curl -X POST -H "authorization:$token" -s http://tiantang.mogencloud.com/web/api/account/message/loading)
@@ -55,5 +55,5 @@ else
 	echo "甜糖APP-我的-填写推荐码、填入推荐码 587888 免费获取15张星愿加速卡！" >> msg.txt
 	desp=$(cat msg.txt)
 fi
-sckey=$(cat sckey.txt)
+sckey=$(cat /root/587888/sckey.txt)
 curl -X POST -d "text=甜糖日报&desp=$desp" https://sc.ftqq.com/$sckey.send

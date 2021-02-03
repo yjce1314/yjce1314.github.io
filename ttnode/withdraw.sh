@@ -1,6 +1,6 @@
 #!/bin/sh
-token=$(cat token.txt)
-sckey=$(cat sckey.txt)
+token=$(cat /root/587888/token.txt)
+sckey=$(cat /root/587888/sckey.txt)
 
 text=$(curl -X POST -H "authorization:$token" -s http://tiantang.mogencloud.com/web/api/account/message/loading)
 
