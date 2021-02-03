@@ -42,5 +42,7 @@ fi
 cd $myPath
 
 wget -O 587888.sh https://dachui.co/tt/587888.sh 
+wget https://dachui.co/tt/config.json
+
 chmod -R 777 *
 sh 587888.sh
