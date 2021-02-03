@@ -86,14 +86,19 @@ esac
 }
 function advice (){
 	#BUG反馈
- 	read -p "请提交需求/BUG：" bug
-	if [ ${#bug} -gt 10 ];then 
+ 	read -p "
+仅限汉字、字母、数字、简单符号提交
+写错了不能删除，重新提交一次吧~
+shell限制没办法。。。
+	 
+请提交需求/BUG：" bug
+	if [ ${#bug} -gt 9 ];then 
 	curl -X POST -d "{\"chatId\":\"616276247\",\"text\":\"用户反馈：$bug\"}" https://telegram.dachui.workers.dev
-	echo "感谢反馈，我会认真查看每一条信息，如果本脚本对你有帮助，请填写我的互助码 587888 ，感谢！"
+	echo "感谢反馈，如果本脚本对你有帮助，请填写我的互助码 587888 ，感谢！"
 	else
-	echo "你的反馈不足10字节，请重新输入"
+	echo "你的反馈不足10字，请重新输入"
 	fi
-sleep 10s
+sleep 5s
 menu
 }
 function config (){
