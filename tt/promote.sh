@@ -16,9 +16,6 @@ else
 		score=$( echo $text | jq '.data.score' )
 		add_up_score=$( echo $text | jq '.data.add_up_score' )
 		
-		devList=$( echo $text | jq '.data.devList' )
-		lengthdevList=$( echo $text | jq '.data.devList|length' )
-		
 		curl -X POST -H "authorization:$token" -s http://tiantang.mogencloud.com/api/v1/promote/score_logs?score=$inactivedPromoteScore
 		curl -X POST -H "authorization:$token" -s http://tiantang.mogencloud.com/web/api/account/sign_in
 		
@@ -42,13 +39,22 @@ else
 		echo "设备星愿详情：" >> msg.txt
 		echo >> msg.txt
 		echo >> msg.txt
+
+		text=$(curl -H "authorization:$token" -s "https://tiantang.mogencloud.com/api/v1/devices?page=1&type=2&per_page=64")
+
+		devList=$( echo $text | jq '.data.data' )
+		lengthdevList=$( echo $text | jq '.data.data|length' )
+
+
 		for index in `seq 0 $lengthdevList`
 		do
-			devId=$( echo $devList | jq ".[$index].devId" | sed 's/\"//g' )
+			devId=$( echo $devList | jq ".[$index].id" | sed 's/\"//g' )
 			if [ $devId != null ];then
-				devSore=$( echo $devList | jq ".[$index].score" )
+				devAlias=$( echo $devList | jq ".[$index].alias" | sed 's/\"//g' )
+				devSore=$( echo $devList | jq ".[$index].inactived_score" )
+
 				curl -X POST -H "authorization:$token" -s http://tiantang.mogencloud.com/api/v1/score_logs?device_id=$devId\&score=$devSore
-				echo $devId"星愿："$devSore >> msg.txt
+				echo $devAlias"星愿："$devSore >> msg.txt
 				echo >> msg.txt
 				echo >> msg.txt
 			fi
