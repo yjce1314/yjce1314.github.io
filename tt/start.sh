@@ -1,7 +1,14 @@
 #!/bin/sh
 rm -f /etc/localtime
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-echo -e "
+
+text=$( ls -l /bin/sh )
+if [[ $text == *"bash" ]]; then
+	echo "bash"
+else
+#dash
+	clear
+	echo -e "
 运行环境准备\033[35m1\033[0m/2：修改dash为bash 
 
 ┌──────────────────────┤ Configuring dash ├───────────────────────┐  
@@ -19,31 +26,36 @@ echo -e "
 │                                          \033[35m↑↑↑↑选他按回车\033[0m          │  
 └─────────────────────────────────────────────────────────────────┘                                                                      
 \033[35m在跳出如上画面中按方向键选择【NO】按回车。\033[0m"
-read -p "按回车键继续..." typ
+	read -p "按回车键继续..." typ
+	sudo dpkg-reconfigure dash	
+fi
 
-sudo dpkg-reconfigure dash
-
-clear
-echo -e "
-运行环境准备\033[35m2\033[0m/2：安装JQ支持
-
-脚本引用开源Jq解析json，详见：https://github.com/stedolan/jq
-
-脚本会自动安装Jq，安装过程需要\033[35m输入Y按回车\033[0m继续。
-"
-read -p "按回车键继续..." typ
-sudo apt-get install jq
+text=$( jq --version )
+if [[ $text == "jq-"* ]]; then
+	echo $text
+else
+	clear
+	echo -e "
+	运行环境准备\033[35m2\033[0m/2：安装JQ支持
+	
+	脚本引用开源Jq解析json，详见：https://github.com/stedolan/jq
+	
+	脚本会自动安装Jq，安装过程需要\033[35m输入Y按回车\033[0m继续。
+	"
+	read -p "按回车键继续..." typ
+	sudo apt-get install jq
+fi
 
 myPath="/root/587888/"
-
 if [ ! -d "$myPath" ]; then
 	mkdir "$myPath"
 fi
 
 cd $myPath
-
-wget -O 587888.sh https://dachui.co/tt/587888.sh 
-wget https://dachui.co/tt/config.json
+wget -O 587888.sh https://dachui.co/tt/587888.sh
+if [ ! -f "${myPath}config.json" ]; then
+	wget https://dachui.co/tt/config.json
+fi
 
 chmod -R 777 *
-sh 587888.sh
+bash 587888.sh

@@ -17,6 +17,7 @@ if [ $version1 != $version2 ];then
 	chmod -R 777 *
 	config=$( echo $config | jq ".version=$version2" )
 	echo $config > config.json
+	wget -O /root/start.sh https://dachui.co/tt/start.sh
 	#更新通知 notice 1.sever酱  2.telegram
 	notice=$( echo $config | jq '.notice' | sed 's/\"//g' )
 	update_log=$(curl https://dachui.co/tt/config.json | jq '.update_log' | sed 's/\"//g')
