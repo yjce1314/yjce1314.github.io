@@ -23,6 +23,7 @@ read -p "按回车键继续..." typ
 
 sudo dpkg-reconfigure dash
 
+clear
 echo -e "
 运行环境准备\033[35m2\033[0m/2：安装JQ支持
 
