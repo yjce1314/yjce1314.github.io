@@ -185,9 +185,10 @@ function uninstall()
 	cp -pdr "$myPath"crontab.default /etc/crontab
 	cp -pdr "$myPath"interfaces.default /etc/network/interfaces
 	rm -rf /root/587888/
-	echo "卸载甜糖成功！重启生效！
+	echo "
+卸载甜糖成功！重启生效！
 
-	10秒后自动重启系统..."
+10秒后自动重启系统..."
 	sleep 10s
 	reboot
 }
@@ -201,10 +202,11 @@ function changeMac()
 	cp -pdr /root/587888/backup/interfaces.default /etc/network/interfaces
 	mac=00:60:2F$(dd bs=1 count=3 if=/dev/random 2>/dev/null |hexdump -v -e '/1 ":%02X"')
 	sed -i "6a hwaddress $mac" /etc/network/interfaces
-	echo "修改Mac成功，重启生效。
-	新Mac是：$mac 请重启后重新绑定设备！
+	echo "
+修改Mac成功，重启生效。
+新Mac是：$mac 请重启后重新绑定设备！
 
-	10秒后自动重启系统..."
+10秒后自动重启系统..."
 	sleep 10s
 	reboot
 	fi
@@ -283,17 +285,15 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 ===================================================
 ===================================================
 			
-此脚本由「折了个腾」原创发布
+此脚本由「折了个腾」原创发布，开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
 			
-开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
-			
---------------------------------------------------------------------------------------------------
+--------------------------------------10秒后返回菜单-------------------------------------------------
 			"
 			sleep 10s
 			menu
 		else
 			echo "输入有误！我的邀请码是：587888"
-			sleep 10s
+			sleep 5s
 			menu
 		fi
 
@@ -328,9 +328,9 @@ read -p "请确认操作：" num2
 case $num2 in
  1)
   read -p "
-  Sever酱Sckey获取页面http://sc.ftqq.com/?c=code
+Sever酱Sckey获取页面http://sc.ftqq.com/?c=code
   
-  请输入Sever酱Sckey：" sckey
+请输入Sever酱Sckey：" sckey
 	if [ ${#sckey} -gt 30 ];then 
 	  config sckey $sckey
 	  config sckey $sckey
@@ -346,20 +346,20 @@ echo "输入的Sckey：$sckey 似乎有误，请检查...
   ;;
  2)
   read -p "
-  用户ID获取请发送任意内容到 @ZLGT_bot 获取...
+用户ID获取请发送任意内容到 @ZLGT_bot 获取...
   
-  请输入Telegram用户ID：" chatId
+请输入Telegram用户ID：" chatId
   config chatId "$chatId"
   config notice 2
   echo "Telegram通知启用成功，用户ID是：$chatId
-  5秒后返回通知菜单..."
+5秒后返回通知菜单..."
   sleep 5s
   notice_menu
   ;;
  3)
   config notice 0
   echo "通知禁用成功！
-  5秒后返回通知菜单..."
+5秒后返回通知菜单..."
   sleep 5s
   notice_menu
   ;;
