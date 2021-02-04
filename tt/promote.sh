@@ -41,10 +41,8 @@ else
 		echo >> msg.txt
 
 		text=$(curl -H "authorization:$token" -s "https://tiantang.mogencloud.com/api/v1/devices?page=1&type=2&per_page=64")
-
 		devList=$( echo $text | jq '.data.data' )
 		lengthdevList=$( echo $text | jq '.data.data|length' )
-
 
 		for index in `seq 0 $lengthdevList`
 		do
@@ -65,14 +63,20 @@ else
 		echo "甜糖APP-我的-填写推荐码、填入推荐码 587888 免费获取15张星愿加速卡！" >> msg.txt
 		desp=$(cat msg.txt)
 	elif [[ $notice = 2 ]];then
+		text=$(curl -H "authorization:$token" -s "https://tiantang.mogencloud.com/api/v1/devices?page=1&type=2&per_page=64")
+		devList=$( echo $text | jq '.data.data' )
+		lengthdevList=$( echo $text | jq '.data.data|length' )
+		
 		for index in `seq 0 $lengthdevList`
 		do
-			devId=$( echo $devList | jq ".[$index].devId" | sed 's/\"//g' )
+			devId=$( echo $devList | jq ".[$index].id" | sed 's/\"//g' )
 			if [ $devId != null ];then
-				devSore=$( echo $devList | jq ".[$index].score" )
+				devAlias=$( echo $devList | jq ".[$index].alias" | sed 's/\"//g' )
+				devSore=$( echo $devList | jq ".[$index].inactived_score" )
+
 				curl -X POST -H "authorization:$token" -s http://tiantang.mogencloud.com/api/v1/score_logs?device_id=$devId\&score=$devSore
-				echo $devId"星愿："$devSore >> msg.txt
-				devdesp=$devdesp"$devId星愿："$devSore"\n"
+
+				devdesp=$devdesp"$devAlias星愿："$devSore"\n"
 			fi
 			sleep 5s
 		done
@@ -81,9 +85,8 @@ else
 
 	fi
 fi
-echo "{\"chatId\":\"$chatId\",\"text\":\"甜糖日报：$desp\"}"
-#通知 notice 1.sever酱  2.telegram
 
+#通知 notice 1.sever酱  2.telegram
 if [[ $notice = 1 ]];then
 	sckey=$( echo $config | jq '.sckey'  | sed 's/\"//g' )
 	curl -X POST -d "text=甜糖日报&desp=$desp" https://sc.ftqq.com/$sckey.send
