@@ -198,7 +198,7 @@ function changeMac()
 	echo "甜糖未安装，请安装后修改Mac地址、、、"
 	else
 	rm -rf /etc/network/interfaces
-	cp -pdr /root/587888/interfaces.default /etc/network/interfaces
+	cp -pdr /root/587888/backup/interfaces.default /etc/network/interfaces
 	mac=00:60:2F$(dd bs=1 count=3 if=/dev/random 2>/dev/null |hexdump -v -e '/1 ":%02X"')
 	sed -i "6a hwaddress $mac" /etc/network/interfaces
 	echo "修改Mac成功，重启生效。
