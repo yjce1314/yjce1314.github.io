@@ -19,8 +19,8 @@ echo -e "
 │                                          \033[35m↑↑↑↑选他按回车\033[0m          │  
 └─────────────────────────────────────────────────────────────────┘                                                                      
 \033[35m在跳出如上画面中按方向键选择【NO】按回车。\033[0m"
-read -p "10秒后继续..."
-sleep 10s
+read -p "按回车键继续..." typ
+
 sudo dpkg-reconfigure dash
 
 echo -e "
@@ -30,8 +30,7 @@ echo -e "
 
 脚本会自动安装Jq，安装过程需要\033[35m输入Y按回车\033[0m继续。
 "
-read -p "10秒后继续..."
-sleep 10s
+read -p "按回车键继续..." typ
 sudo apt-get install jq
 
 myPath="/root/587888/"
