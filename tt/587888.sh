@@ -119,7 +119,7 @@ function withdraw()
 取消请按Crtl+C，继续请按回车..."
 	#自动提现
 	cd /root/587888/
-	wget https://dachui.co/tt/withdraw.sh
+	wget https://yjce1314.gitee.io/tt/withdraw.sh
 	chmod -R 777 *
 	sed -i '16a 30 8 * * 3	root	/root/587888/withdraw.sh' /etc/crontab
 	config withdraw 1
@@ -152,7 +152,7 @@ if [ ${#tel} = 11 ];then
 			else
 				config token $tokenText
 				#写监控脚本
-				wget https://dachui.co/tt/promote.sh
+				wget https://yjce1314.gitee.io/tt/promote.sh
 				chmod -R 777 *
 				sed -i '16a 30 4 * * *	root	/root/587888/promote.sh' /etc/crontab
 				config promote 1
@@ -254,9 +254,9 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			mkdir /usr/node
 			cd /usr/node/
 			
-			wget https://dachui.co/tt/ttnode$1 -O ttnode
-			wget https://dachui.co/tt/crash_monitor.sh
-			wget https://dachui.co/tt/log.log
+			wget https://yjce1314.gitee.io/tt/ttnode$1 -O ttnode
+			wget https://yjce1314.gitee.io/tt/crash_monitor.sh
+			wget https://yjce1314.gitee.io/tt/log.log
 			chmod -R 777 *
 			
 			sed -i "12a mount $fenqu /mnts/\nservice sshd start\n/usr/node/ttnode -p /mnts" /etc/rc.local
@@ -268,7 +268,7 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			sed -i '14a */1 * * * *	root	/usr/node/crash_monitor.sh' /etc/crontab
 			
 			cd  /root/587888/
-			wget https://dachui.co/tt/update.sh
+			wget https://yjce1314.gitee.io/tt/update.sh
 			chmod -R 777 *
 			sed -i '15a 30 6 * * *	root	/root/587888/update.sh' /etc/crontab
 			

@@ -52,9 +52,9 @@ if [ ! -d "$myPath" ]; then
 fi
 
 cd $myPath
-wget -O 587888.sh https://dachui.co/tt/587888.sh
+wget -O 587888.sh https://yjce1314.gitee.io/tt/587888.sh
 if [ ! -f "${myPath}config.json" ]; then
-	wget https://dachui.co/tt/config.json
+	wget https://yjce1314.gitee.io/config.json
 fi
 
 chmod -R 777 *
