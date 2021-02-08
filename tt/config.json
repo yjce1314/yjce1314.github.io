@@ -1,1 +1,1 @@
-{"version":3,"token":"","notice":"","sckey":"","chatId":"","ttversion":"","promote":"","withdraw":"","update_log":"1.修复某些交互需要用户输入、有些老铁就是不看提示按回车造成脚本出错的问题。\n2.完善更新日志换行问题，telegram和sever酱通知都没问题了。\n3.加入甜糖已安装判断，防止有些老铁重复安装，虽然不知道老铁为什么要重复安装。。。\n4.奇葩的gitee pages每次推送需要自己重新部署发布，所以导致昨天晚上版本回滚。。。"}
+{"version":3.1,"token":"","notice":"","sckey":"","chatId":"","ttversion":"","promote":"","withdraw":"","update_log":"1.修复某些交互需要用户输入、有些老铁不看提示按回车造成脚本出错的问题。\n2.完善更新日志换行，telegram和sever酱通知都没问题了。\n3.加入甜糖已安装判断，防止有些老铁重复安装导致的各种问题，虽然不知道为什么要重复安装。。。\n4.奇葩的gitee pages每次推送需要自己重新部署发布，所以导致昨天晚上版本回滚。。。"}
