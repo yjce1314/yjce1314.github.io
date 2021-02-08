@@ -232,7 +232,7 @@ function install()
 {
 	config=$(cat /root/587888/config.json)
 	zt1=$( echo $config | jq '.ttversion' | sed 's/\"//g' )
-	if [[ $zt1 = 32 -o $zt1 = 64 ]]; then
+	if [[ $zt1 = 32 || $zt1 = 64 ]]; then
 	echo "甜糖已安装，如需重新安装，请使用本程序卸载后运行脚本： wget -O start.sh https://yjce1314.gitee.io/tt/start.sh && sh start.sh  重新安装！"
 	else
 
