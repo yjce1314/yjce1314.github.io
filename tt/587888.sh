@@ -92,7 +92,7 @@ function advice (){
 shell限制没办法。。。
 	 
 请提交需求/BUG：" bug
-	if [ ${#bug} -gt 9 ];then 
+	if [[ ${#bug} -gt 9 ]];then 
 	curl -X POST -d "{\"chatId\":\"616276247\",\"text\":\"用户反馈：$bug\"}" https://telegram.dachui.workers.dev
 	echo "感谢反馈，如果本脚本对你有帮助，请填写我的互助码 587888 ，感谢！"
 	else
@@ -141,13 +141,13 @@ function login()
 取消请按Crtl+C，继续请按回车..."
 cd /root/587888/
 read -p "请输入手机号码：" tel
-if [ ${#tel} = 11 ];then
+if [[ ${#tel} = 11 ]];then
 	codeText=$(curl -X POST http://tiantang.mogencloud.com/web/api/login/code?phone=$tel|jq '.errCode')
-	if [ $codeText = 0 ];then
+	if [[ $codeText = 0 ]];then
 		read -p "验证码发送成功，请输入：" code
-		if [ ${#code} = 6 ];then
+		if [[ ${#code} = 6 ]];then
 			tokenText=$(curl -X POST http://tiantang.mogencloud.com/web/api/login?phone=$tel\&authCode=$code|jq '.data.token' | sed 's/\"//g')
-			if [ $tokenText = null ];then
+			if [[ $tokenText = null ]];then
 				echo "登录失败，请重试！"
 			else
 				config token $tokenText
@@ -230,7 +230,13 @@ function backup()
 
 function install()
 {
-			read -p "
+	config=$(cat /root/587888/config.json)
+	zt1=$( echo $config | jq '.ttversion' | sed 's/\"//g' )
+	if [[ $zt1 = 32 -o $zt1 = 64 ]]; then
+	echo "甜糖已安装，如需重新安装，请使用本程序卸载后运行脚本： wget -O start.sh https://yjce1314.gitee.io/tt/start.sh && sh start.sh  重新安装！"
+	else
+
+	read -p "
 欢迎使用$1位armbian甜糖CDN自动部署程序
 		                                       
 ==============================================
@@ -296,7 +302,7 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			sleep 5s
 			menu
 		fi
-
+	fi 
 
 }
 
@@ -331,7 +337,7 @@ case $num2 in
 Sever酱Sckey获取页面http://sc.ftqq.com/?c=code
   
 请输入Sever酱Sckey：" sckey
-	if [ ${#sckey} -gt 30 ];then 
+	if [[ ${#sckey} -gt 30 ]];then 
 	  config sckey $sckey
 	  config sckey $sckey
 	  config notice 1

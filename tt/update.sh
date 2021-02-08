@@ -24,21 +24,29 @@ if [ $version1 != $version2 ];then
 	update_log=$(curl https://yjce1314.gitee.io/tt/config.json | jq '.update_log' | sed 's/\"//g')
 	if [[ $notice = 1 ]];then
 		if [[ $update_log == *"\\n"* ]]; then
-			OLD_IFS="$IFS"
-			IFS="\\n" 
-			arr=($update_log)
-			IFS="$OLD_IFS"
-
-			for s in ${arr[@]}
-			do
-			echo "$s"
-			done
+		OLD_IFS="$IFS"
+		IFS="\\n" 
+		arr=($update_log)
+		IFS="$OLD_IFS"
+		
+		for s in "${arr[@]}"
+		do
+			if [ "$s" != "" ]; then
+			echo $s >> msg.txt
+			echo >> msg.txt
+			echo >> msg.txt
+			fi
+		done
+		
+		echo "***" >> msg.txt
+		echo "甜糖APP-我的-填写推荐码 587888 免费获取15张星愿加速卡！" >> msg.txt
+		update_log=$(cat msg.txt)
 		fi
 
 		sckey=$( echo $config | jq '.sckey'  | sed 's/\"//g' )
 		curl -X POST -d "text=甜糖脚本更新日志&desp=$update_log" https://sc.ftqq.com/$sckey.send
 	elif [[ $notice = 2 ]];then
 		chatId=$( echo $config | jq '.chatId'  | sed 's/\"//g')
-		curl -X POST -d "{\"chatId\":\"$chatId\",\"text\":\"甜糖脚本更新日志：$update_log\"}" https://telegram.dachui.workers.dev
+		curl -X POST -d "{\"chatId\":\"$chatId\",\"text\":\"甜糖脚本更新日志：\n$update_log\"}" https://telegram.dachui.workers.dev
 	fi
 fi
