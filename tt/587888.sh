@@ -34,7 +34,7 @@ function menu ()
 
 `echo -e "\033[35m 1)32位设备安装（玩客云）\033[0m$zt11"`
 `echo -e "\033[35m 2)64位设备安装（斐讯N1）\033[0m$zt22"`
-`echo -e "\033[35m 3)更换Mac地址\033[0m"`
+`echo -e "\033[35m 3)MAC地址&绑定码\033[0m"`
 `echo -e "\033[35m 4)卸载甜糖\033[0m"`
 `echo -e "\033[35m 5)星愿自动领取\033[0m$zt33"`
 `echo -e "\033[35m 6)星愿自动提现\033[0m$zt44"`
@@ -53,7 +53,7 @@ case $num in
 		install 64
       ;;
 	3)
-		changeMac
+		ttnote_menu
 	;;
 	4)
 		uninstall
@@ -287,27 +287,20 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			sed -i '15a 30 6 * * *	root	/root/587888/update.sh' /etc/crontab
 			
 			config ttversion $1
-			clear
-			/usr/node/ttnode -p /mnts
-			sleep 5s
-			/usr/node/ttnode -p /mnts > 1.txt
-			while read -r line
-			do
-			if [[ $line = "uid"* ]]; then
-			uid=$(echo $line | sed 's/uid = //g') 
-			fi
-			done < 1.txt
-			rm -rf 1.txt
 
-echo -e "---------------------------------\033[35m部署成功，请打开APP绑定设备\033[0m------------------------------------
+echo -e "
+---------------------------------\033[35m部署成功，请重启设备绑定APP\033[0m------------------------------------
 \033[35mtips:\033[0m
 1.二次进入菜单直接运行部署命令，或者 sh /root/587888/587888.sh
-2.如果APP无法发现设备，请打开网页 https://cli.im/api/qrcode/code?text=$uid 扫码绑定。
-3.如果扫码提示设备已绑定请运行主菜单，按 3 更换MAC地址 重启设备重新绑定。
+2.如果APP无法发现设备，请运行主菜单 按 3 扫码绑定。
+3.如果扫码提示设备已绑定，请运行主菜单，按 3 更换MAC地址 重启设备重新绑定。
 4.有BUG/需求反馈请运行主菜单 按 8 反馈。
 
 \033[1;33;41m此脚本由「折了个腾」原创发布，开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！\033[0m
-------------------------------------------------------------------------------------------------"
+------------------------------------------------------------------------------------------------
+20秒后自动重启设备，取消自动重启请按Ctrl+C"
+	sleep 20s
+	reboot
 		else
 			echo "输入有误！我的邀请码是：587888"
 			sleep 5s
@@ -388,4 +381,54 @@ echo "输入的Sckey：$sckey 似乎有误，请检查...
   notice_menu
 esac
 }
+
+function ttnote_menu ()
+{
+ cat << EOF
+----------------------------------------
+|************MAC地址&绑定码*************|
+----------------------------------------
+`echo -e "\033[35m 1)修改Mac地址\033[0m$svj"`
+`echo -e "\033[35m 2)获取APP绑定码\033[0m$tg"`
+`echo -e "\033[35m 3)重启设备\033[0m"`
+`echo -e "\033[35m 4)返回主菜单\033[0m"`
+EOF
+read -p "请确认操作：" num2
+case $num2 in
+ 1)
+	changeMac
+  ;;
+ 2)
+	/usr/node/ttnode -p /mnts
+	/usr/node/ttnode -p /mnts > 1.txt
+	while read -r line
+	do
+	if [[ $line = "uid"* ]]; then
+		uid=$(echo $line | sed 's/uid = //g') 
+	fi
+	done < 1.txt
+	rm -rf 1.txt
+	clear
+	echo -e "
+\033[35mtips:\033[0m
+1.请打开网页 https://cli.im/api/qrcode/code?text=$uid 扫码绑定。
+2.如果扫码提示设备已绑定请运行主菜单，按 3 更换MAC地址 重启设备重新绑定。
+3.有BUG/需求反馈请运行主菜单 按 8 反馈。
+4.二次进入菜单直接运行部署命令，或者 sh /root/587888/587888.sh
+"
+  ;;
+ 3)
+	reboot
+  ;;
+ 4)
+  clear
+  menu
+  ;;
+ *)
+  echo "输入错误，请重新输入！"
+	clear
+  notice_menu
+esac
+}
+
 menu
