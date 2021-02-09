@@ -2,6 +2,8 @@
 rm -f /etc/localtime
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
+apt-get install curl
+
 text=$( ls -l /bin/sh )
 if [[ $text == *"bash" ]]; then
 	echo "bash"
