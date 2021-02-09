@@ -81,6 +81,7 @@ case $num in
 	*)
 	echo "输入错误，请重新输入！"
 	sleep 5s
+	clear
 	menu
 esac
 }
@@ -164,12 +165,18 @@ if [[ ${#tel} = 11 ]];then
 			fi
 		else
 			echo "验证码输入错误！"
+			sleep 5s
+			menu
 		fi
 	else
 	echo "发送验证码失败，请重试！"
+	sleep 5s
+	menu
 	fi
 else
 	echo "手机号码输入错误！"
+	sleep 5s
+	menu
 fi
 }
 
@@ -179,7 +186,8 @@ function uninstall()
 即将卸载所有服务，包括甜糖、自动收取、自动提现，此操作不可逆！
 
 取消请按Crtl+C，继续请按回车..." 
-	rm -rf /etc/rc.local /etc/crontab /etc/network/interfaces
+	pkill -f ttnode
+	rm -rf /etc/rc.local /etc/crontab /etc/network/interfaces /usr/node
 	myPath="/root/587888/backup/"
 	cp -pdr "$myPath"rc.local.default /etc/rc.local
 	cp -pdr "$myPath"crontab.default /etc/crontab
@@ -280,23 +288,25 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			
 			config ttversion $1
 			clear
-			echo "
---------------------------------------------------------------------------------------------------
-			
-部署成功，建议重启系统！
-			
-===================================================
-===================================================
-      请大力填写我的甜糖发财邀请码：587888
-===================================================
-===================================================
-			
-此脚本由「折了个腾」原创发布，开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！
-			
---------------------------------------10秒后返回菜单-------------------------------------------------
-			"
-			sleep 10s
-			menu
+
+			/usr/node/ttnode -p /mnts > 1.txt
+			while read -r line
+			do
+			if [[ $line = "uid"* ]]; then
+			uid=$(echo $line | sed 's/uid = //g') 
+			fi
+			done < 1.txt
+			rm -rf 1.txt
+
+echo -e "---------------------------------\033[35m部署成功，请打开APP绑定设备\033[0m------------------------------------
+\033[35mtips:\033[0m
+1.二次进入菜单直接运行部署命令，或者 sh /root/587888/587888.sh
+2.如果APP无法发现设备，请打开网页 https://cli.im/api/qrcode/code?text=$uid 扫码绑定。
+3.如果扫码提示设备已绑定请运行主菜单，按 3 更换MAC地址 重启设备重新绑定。
+4.有BUG/需求反馈请运行主菜单 按 8 反馈。
+
+\033[1;33;41m此脚本由「折了个腾」原创发布，开发不易，新来的朋友填我的推荐码 587888 支持一下，感谢！\033[0m
+------------------------------------------------------------------------------------------------"
 		else
 			echo "输入有误！我的邀请码是：587888"
 			sleep 5s
@@ -305,8 +315,6 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 	fi 
 
 }
-
-
 
 function notice_menu ()
 {
@@ -375,6 +383,7 @@ echo "输入的Sckey：$sckey 似乎有误，请检查...
   ;;
  *)
   echo "输入错误，请重新输入！"
+	clear
   notice_menu
 esac
 }

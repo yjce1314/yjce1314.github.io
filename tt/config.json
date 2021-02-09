@@ -1,1 +1,1 @@
-{"version":3.2,"token":"","notice":"","sckey":"","chatId":"","ttversion":"","promote":"","withdraw":"","update_log":"小版本更新、运行环境新增curl安装，有些老铁的机器curl都没安装。"}
+{"version":3.3,"token":"","notice":"","sckey":"","chatId":"","ttversion":"","promote":"","withdraw":"","update_log":"1.运行环境新增curl安装，有些老铁的机器curl都没安装。\n 2.甜糖部署完成提供二维码绑定方式，完善安装后提示。"}
