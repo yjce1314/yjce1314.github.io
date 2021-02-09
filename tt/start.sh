@@ -54,7 +54,7 @@ fi
 cd $myPath
 wget -O 587888.sh https://yjce1314.gitee.io/tt/587888.sh
 if [ ! -f "${myPath}config.json" ]; then
-	wget https://yjce1314.gitee.io/config.json
+	wget https://yjce1314.gitee.io/tt/config.json
 fi
 
 chmod -R 777 *
