@@ -288,7 +288,8 @@ tips：建议看容量挂载，或者填入【 LABEL="587888" 】并把磁盘名
 			
 			config ttversion $1
 			clear
-
+			/usr/node/ttnode -p /mnts
+			sleep 5s
 			/usr/node/ttnode -p /mnts > 1.txt
 			while read -r line
 			do
