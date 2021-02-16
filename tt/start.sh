@@ -2,7 +2,14 @@
 rm -f /etc/localtime
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
+
+text=$( curl -V )
+if [[ $text == "curl "* ]]; then
+	echo "crul已安装，跳过、、、"
+else
 apt-get install curl
+fi
+
 
 text=$( ls -l /bin/sh )
 if [[ $text == *"bash" ]]; then
