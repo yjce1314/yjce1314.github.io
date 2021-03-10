@@ -122,10 +122,11 @@ function withdraw()
 	cd /root/587888/
 	wget https://yjce1314.gitee.io/tt/withdraw.sh
 	chmod -R 777 *
-	sed -i '16a 30 8 * * 3	root	/root/587888/withdraw.sh' /etc/crontab
+	mm=$(date +%M)
+	sed -i sed -i "16a $mm 8 * * 3	root	/root/587888/withdraw.sh" /etc/crontab /etc/crontab
 	config withdraw 1
 	read -p  "
-部署成功，每周三8点30分准时提现星愿！
+部署成功，每周三8点$mm分准时提现星愿！
 
 如需server酱或telegram通知，请按回车继续..."
 notice_menu
@@ -155,10 +156,11 @@ if [[ ${#tel} = 11 ]];then
 				#写监控脚本
 				wget https://yjce1314.gitee.io/tt/promote.sh
 				chmod -R 777 *
-				sed -i '16a 30 4 * * *	root	/root/587888/promote.sh' /etc/crontab
+				mm=$(date +%M)
+				sed -i "16a $mm 4 * * *	root	/root/587888/promote.sh" /etc/crontab
 				config promote 1
 				read -p "
-部署成功，每天凌晨4点30分准时收取星愿！
+部署成功，每天凌晨4点$mm分准时收取星愿！
 
 如需server酱或telegram通知，请按回车继续..." 
 				notice_menu

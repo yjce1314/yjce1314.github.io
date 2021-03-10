@@ -1,1 +1,1 @@
-{"version":3.4,"token":"","notice":"","sckey":"","chatId":"","ttversion":"","promote":"","withdraw":"","update_log":"1.细节优化。\n 2.换Mac地址请重启一下设备，重启后才会生效。"}
+{"version":3.5,"token":"","notice":"","sckey":"","chatId":"","ttversion":"","promote":"","withdraw":"","update_log":"1.优化了一下自动领取逻辑。\n2.自动领取随机时间，错开高峰期。重新部署生效。"}
