@@ -1,1 +1,1 @@
-{"version":3.5,"token":"","notice":"","sckey":"","chatId":"","ttversion":"","promote":"","withdraw":"","update_log":"1.优化了一下自动领取逻辑。\n2.自动领取随机时间，错开高峰期。重新部署生效。"}
+{"version":3.6,"token":"","notice":"","sckey":"","chatId":"","ttversion":"","promote":"","withdraw":"","update_log":"1.因为甜糖cookie作妖，搞了几个.，导致小伙伴更新cookie失败，现修复。2.有小伙伴要求加入pushplus，有空加上。3.其他功能一直没毛病，不做修改了。"}

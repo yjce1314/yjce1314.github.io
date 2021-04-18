@@ -106,7 +106,7 @@ function config (){
 	#写配置
 	Notation='"'$2'"'
 	config=$(cat /root/587888/config.json)
-	config=$( echo $config | jq ".$1=$Notation" )
+	config=$( echo $config | jq '.'$1'="'$Notation'"' )
 	echo $config > config.json
 }
 
