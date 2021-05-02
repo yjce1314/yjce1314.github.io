@@ -3,9 +3,9 @@ clear
 function menu ()
 {
 	config=$(cat /root/587888/config.json)
-	zt1=$( echo $config | jq '.ttversion' | sed 's/\"//g' )
-	zt3=$( echo $config | jq '.promote' | sed 's/\"//g' )
-	zt4=$( echo $config | jq '.withdraw' | sed 's/\"//g')
+	zt1=$( echo $config | jq '.ttversion' )
+	zt3=$( echo $config | jq '.promote' )
+	zt4=$( echo $config | jq '.withdraw' )
 	zt5=$( echo $config | jq '.notice' | sed 's/\"//g' )
 
 	if [[ $zt1 = 32 ]]; then
