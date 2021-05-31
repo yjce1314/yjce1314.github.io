@@ -3,7 +3,7 @@ cd /root/587888/
 rm -rf msg.txt
 
 config=$(cat config.json)
-token=$( echo $config | jq '.token'  | sed 's/\"//g' )
+token=$(cat token.txt)
 notice=$( echo $config | jq '.notice' | sed 's/\"//g' )
 
 text=$(curl -H "authorization:$token" -s "https://tiantang.mogencloud.com/api/v1/devices?page=1&type=2&per_page=64")

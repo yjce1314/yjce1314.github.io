@@ -152,7 +152,8 @@ if [[ ${#tel} = 11 ]];then
 			if [[ $tokenText = null ]];then
 				echo "登录失败，请重试！"
 			else
-				config token $tokenText
+				#config token $tokenText
+				echo $tokenText > token.txt
 				#写监控脚本
 				wget https://yjce1314.gitee.io/tt/promote.sh
 				chmod -R 777 *

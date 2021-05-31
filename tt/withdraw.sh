@@ -2,7 +2,7 @@
 cd /root/587888/
 
 config=$(cat config.json)
-token=$( echo $config | jq '.token'  | sed 's/\"//g' )
+token=$(cat token.txt)
 
 text=$(curl -X POST -H "authorization:$token" -s http://tiantang.mogencloud.com/web/api/account/message/loading)
 errCode=$(echo $text | jq '.errCode' )
