@@ -55,8 +55,6 @@ if type yum >/dev/null 2>&1 ; then
     fi
 fi
 
-
-
 # check arch
 if [ $(uname -m) = "x86_64" ]; then
     PLATFORM=amd64
