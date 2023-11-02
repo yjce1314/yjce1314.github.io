@@ -82,7 +82,7 @@ mv ${FILE_NAME}/${FRP_NAME} ${FRP_PATH}
 # configure frpc.ini
 cat >${FRP_PATH}/${FRP_NAME}.ini <<EOF
 [common]
-server_addr = ${FRP_NAME}
+server_addr = ${FRP_NAME}1
 server_port = 7000
 token = 84488448
 
